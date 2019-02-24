@@ -221,6 +221,14 @@
     <Compile Include="Migrations\201902171415316_PopulateGenre.Designer.cs">
       <DependentUpon>201902171415316_PopulateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902211610421_changedFromBytetoInt.cs" />
+    <Compile Include="Migrations\201902211610421_changedFromBytetoInt.Designer.cs">
+      <DependentUpon>201902211610421_changedFromBytetoInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902221353578_matchedthetypeofGenreIds.cs" />
+    <Compile Include="Migrations\201902221353578_matchedthetypeofGenreIds.Designer.cs">
+      <DependentUpon>201902221353578_matchedthetypeofGenreIds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -231,7 +239,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\NewCustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -294,7 +302,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
-    <Content Include="Views\Customers\New.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +350,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902171415316_PopulateGenre.resx">
       <DependentUpon>201902171415316_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902211610421_changedFromBytetoInt.resx">
+      <DependentUpon>201902211610421_changedFromBytetoInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902221353578_matchedthetypeofGenreIds.resx">
+      <DependentUpon>201902221353578_matchedthetypeofGenreIds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
