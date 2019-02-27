@@ -17,6 +17,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Birthdate)
         @Html.TextBoxFor(m => m.Customer.Birthdate,"{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Customer.Birthdate)
     </div>
 
     <div class="form-group">
@@ -31,7 +32,13 @@
         </label>
     </div>
     @Html.HiddenFor(m=>m.Customer.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 
 }
 
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

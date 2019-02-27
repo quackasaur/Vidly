@@ -23,6 +23,10 @@ namespace Vidly.Models
         public int MembershipTypeId { get; set; }
 
         [Display(Name ="Date of birth")]
+        [Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
+
+        public static readonly int Unknown = 0;
+        public static readonly int PayAsYouGo = 1;
     }
 }
