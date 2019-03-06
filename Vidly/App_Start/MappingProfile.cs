@@ -14,6 +14,7 @@ namespace Vidly.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
+            //This is required to avoid the exception of "cannot change the id property"
             Mapper.CreateMap<CustomerDto, Customer>().ForMember(c=>c.Id, opt=>opt.Ignore());
 
             Mapper.CreateMap<Movie, MovieDto>();
