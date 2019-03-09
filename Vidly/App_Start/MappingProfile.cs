@@ -12,6 +12,8 @@ namespace Vidly.App_Start
     {
         public MappingProfile()
         {
+            //*IMPORTANT: The variables should be same fro mapping , else it wont work
+
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
@@ -20,6 +22,7 @@ namespace Vidly.App_Start
 
             Mapper.CreateMap<Movie, MovieDto>();
             Mapper.CreateMap<MovieDto, Movie>();
+            Mapper.CreateMap<Genre, GenreDto>();
             Mapper.CreateMap<MovieDto, Movie>().ForMember(m => m.Id, opt => opt.Ignore());
         }
     }
