@@ -8,7 +8,7 @@
 
 <ul>
     <li>Genre: @Model.Genre.Name</li>
-    <li>Release Date: @Model.ReleaseDate.ToLongDateString()</li>
-    <li>Date Added: @Model.DateAdded.ToLongDateString()</li>
+    <li>Release Date: @Model.ReleaseDate.Value.ToLongDateString()</li>
+    <li>Date Added: @Model.DateAdded.Value.ToLongDateString()</li>
     <li>Stock: @Model.NumberInStock</li>
 </ul>
