@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -28,8 +29,12 @@ namespace Vidly.Controllers
             //*you dont need thhis anymore coz ajax will get it from the apis
             // var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             // return View(customers);
+            if (User.IsInRole(RoleName.CanManageMovies)) //using this just to see if the user is admin or not
+            {
+                return View("List");
 
-            return View();
+            }
+            return View("ReadOnlyList");
         }
 
         public ActionResult Details(int id)
@@ -38,6 +43,7 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
+        [Authorize (Roles=RoleName.CanManageMovies)]
         public ActionResult CustomerForm()
         {
             List<MembershipType> membershipType = _context.MembershipTypes.ToList();

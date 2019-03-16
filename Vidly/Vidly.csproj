@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -268,6 +269,10 @@
     <Compile Include="Migrations\201903131510346_driversLicense.cs" />
     <Compile Include="Migrations\201903131510346_driversLicense.Designer.cs">
       <DependentUpon>201903131510346_driversLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903161512549_addedPhoneNumber.cs" />
+    <Compile Include="Migrations\201903161512549_addedPhoneNumber.Designer.cs">
+      <DependentUpon>201903161512549_addedPhoneNumber.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -517,12 +522,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\List.cshtml" />
     <Content Include="Views\Movies\List.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
+    <Content Include="Views\Customers\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -591,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903131510346_driversLicense.resx">
       <DependentUpon>201903131510346_driversLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903161512549_addedPhoneNumber.resx">
+      <DependentUpon>201903161512549_addedPhoneNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
