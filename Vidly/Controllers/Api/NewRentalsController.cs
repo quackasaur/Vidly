@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -43,6 +45,29 @@ namespace Vidly.Controllers.Api
 
                 _context.Rentals.Add(rental);
             }
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        // HttpGet /Api/NewRentals/
+        public IEnumerable<RentalDto> GetRentals()
+        {
+            return _context.Rentals.Include(r => r.Customer).Include(r => r.Movie).ToList().Select(Mapper.Map<Rental, RentalDto>);
+        }
+
+        //DELETE /api/newrentals/id
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var rentalInDb = _context.Rentals.Include(r=>r.Movie).SingleOrDefault(r => r.Id == id);
+
+            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == rentalInDb.Movie.Id);
+
+            movieInDb.NumberAvailable++;
+
+            _context.Rentals.Remove(rentalInDb);
 
             _context.SaveChanges();
 

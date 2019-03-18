@@ -10,7 +10,7 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control" />
+            <input id="customer" required type="text" value="" class="form-control" />
         </div>
     </div>
     
@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-4">
-            <ul id="movies" class="list-group"></ul>
+            <ul id="movies" required class="list-group"></ul>
         </div>
     </div> 
     
@@ -32,6 +32,7 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval");
     <script>
         $(document).ready(function() {
             var vm = {
@@ -80,24 +81,37 @@
                 function(e, movie) {
                     $('#movies').append("<li class='list-group-item'>" + movie.name + "</li>");
 
-                    $('#movies').typeahead("val", "");
-                    vm.movieIds.push(movie.id)
+                    $('#movie').typeahead("val", "");
+                    vm.movieIds.push(movie.id);
                 });
 
-            $('#newRental').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                        url: "/api/NewRentals",
-                        method: "post",
-                        data: vm
-                    })
-                    .done(function() {
-                        toastr.success("Rentals successfully recorded");
-                    })
-                    .fail(function() {
-                        toastr.error("You f***ed up!!!")
-                    });
+            $.validator.addMethod("validCustomer",
+                function() {
+                    return vm.customerId && vm.customerId != 0;
+                }, "Please enter a valid customer name");
 
+            $.validator.addMethod("validMovie", function () {
+                return vm.movieIds.length > 0;
+            }, "Please select at least one movie.");
+
+            $("#newRental").validate({
+                submitHandler: function(frm, e) {
+                    e.preventDefault();
+                    $.ajax({
+                            url: "/api/NewRentals",
+                            method: "post",
+                            data: vm
+                        })
+                        .done(function() {
+                            toastr.success("Rentals successfully recorded");
+                            $("#customer").typeahead("val", "");
+                            $("#movie").typeahead("val", "");
+                            $("#movies").empty();
+                        })
+                        .fail(function() {
+                            toastr.error("You f***ed up!!!");
+                        });
+                }
             });
 
         });

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Rentals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rentals</h2>
+
+<div class="form-group">
+    @Html.ActionLink("New Rental", "New", "Rentals", "null", new { @class = "btn btn-primary" })
+</div>
+
+<table id="rentals" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Movie</th>
+            <th>Rented On</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#rentals").DataTable({
+                ajax: {
+                    url: "/api/newrentals/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "customer.name"
+                    },
+                    {
+                        data: "movie.name"
+                    },
+                    {
+                        data: "dateRented"
+                    }
+                ]
+            });
+        });
+    </script>
+
+}

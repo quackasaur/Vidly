@@ -216,6 +216,7 @@
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\RentalDto.cs" />
     <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -567,6 +568,8 @@
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
     <Content Include="Views\Customers\ReadOnlyList.cshtml" />
     <Content Include="Views\Rentals\New.cshtml" />
+    <Content Include="Views\Rentals\List.cshtml" />
+    <Content Include="Views\Rentals\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
